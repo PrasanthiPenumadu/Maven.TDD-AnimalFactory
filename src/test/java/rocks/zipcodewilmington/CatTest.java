@@ -2,7 +2,9 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Mammal;
 
 import java.util.Date;
 
@@ -39,5 +41,48 @@ public class CatTest {
         Assert.assertEquals(givenBirthDate, retrievedBirthDate);
         Assert.assertEquals(givenId, retrievedId);
     }
+    @Test
+    public void testSetName() {
+        Cat cat = new Cat(" ",new Date(),0);
+       cat.setName("Zula");
+        Assert.assertEquals("Zula", cat.getName());
+    }
+    @Test
+    public void testSetBirthDate() {
+        Cat cat = new Cat("Zula ",new Date(),0);
+        cat.setBirthDate(new Date());
+        Assert.assertEquals(new Date(), cat.getBirthDate());
+    }
+    @Test
+    public void testspeak(){
+        Cat cat = new Cat("Zula ",new Date(),0);
+        Assert.assertEquals("meow!", cat.speak());
+    }
+    @Test
+    public void testeat(){
+        Cat cat = new Cat("Zula ",new Date(),0);
+        Food milk=new Food();
+        cat.eat(milk);
+      int i= cat.getNumberOfMealsEaten();
 
+       Assert.assertEquals(1,i);
+    }
+    @Test
+    public void testgetID(){
+        Cat cat = new Cat("Zula ",new Date(),0);
+        int id=cat.getId();
+       Assert.assertEquals(0,id);
+    }
+
+   @Test
+    public void testInstance(){
+        Cat cat = new Cat("Zula ",new Date(),0);
+       Assert.assertEquals(true,cat instanceof Animal);
+    }
+
+    @Test
+    public void testInstancem(){
+        Cat cat = new Cat("Zula ",new Date(),0);
+        Assert.assertEquals(true,cat instanceof Mammal);
+    }
 }

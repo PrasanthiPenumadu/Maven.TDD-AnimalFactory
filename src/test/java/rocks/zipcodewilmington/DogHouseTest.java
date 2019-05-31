@@ -1,5 +1,6 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
@@ -31,4 +32,58 @@ public class DogHouseTest {
         // Then
         DogHouse.getNumberOfDogs();
     }
+    @Test
+    public void testAdd(){
+        DogHouse.clear();
+        Dog axlej = AnimalFactory.createDog("Milo",new Date());
+        DogHouse dg=new DogHouse();
+        dg.add(axlej);
+        int j=dg.getNumberOfDogs();
+       Assert.assertEquals(1,j);
+    }
+    @Test
+    public void testRemoveid()
+    {
+        DogHouse.clear();
+        Dog dog2 = AnimalFactory.createDog("Milo",new Date());
+        DogHouse dg=new DogHouse();
+        dg.add(dog2);
+        Integer id=0;
+        dg.remove(id);
+        int j=dg.getNumberOfDogs();
+
+        Assert.assertEquals(0,j);
+    }
+
+    @Test
+            public void testRemove()
+    {    DogHouse.clear();
+        Dog dog2 = AnimalFactory.createDog("Milo",new Date());
+        DogHouse dg=new DogHouse();
+        dg.add(dog2);
+        dg.remove(dog2);
+        int j=dg.getNumberOfDogs();
+        Assert.assertEquals(0,j);
+    }
+
+@Test
+    public void testDogdbyid(){
+    DogHouse.clear();
+  Dog dog3 = AnimalFactory.createDog("Milo",new Date());
+   DogHouse dg=new DogHouse();
+   dg.add(dog3);
+    int id=0;
+    Dog d3=dg.getDogById(id);
+    Assert.assertEquals(dog3,d3);
+}
+@Test
+    public void testgetNumberOfDogs(){
+    DogHouse.clear();
+    Dog dog3 = AnimalFactory.createDog("Milo",new Date());
+    DogHouse dg=new DogHouse();
+    dg.add(dog3);
+    int j=dg.getNumberOfDogs();
+    Assert.assertEquals(1,j);
+}
+
 }
